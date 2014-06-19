@@ -44,6 +44,11 @@
         <upstream.version>26962ce</upstream.version>
         <upstream.url>http://www.chartjs.org/</upstream.url>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
+        <requirejs>
+           {
+              "paths" : { "chartjs" : "Chart.js" }
+           }
+        </requirejs>
     </properties>
 
     <build>
