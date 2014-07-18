@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>chartjs</artifactId>
-    <version>26962ce-2-SNAPSHOT</version>
+    <version>1.0.1-beta.2-SNAPSHOT</version>
     <name>Chart.js</name>
     <description>WebJar for Chart.js</description>
     <url>http://webjars.org</url>
@@ -41,8 +41,8 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.version>26962ce</upstream.version>
-        <upstream.url>http://www.chartjs.org/</upstream.url>
+        <upstream.version>1.0.1-beta.2</upstream.version>
+        <upstream.url>https://github.com/nnnick/Chart.js/archive</upstream.url>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
         <requirejs>
            {
@@ -64,8 +64,8 @@
                             <goal>download-single</goal>
                         </goals>
                         <configuration>
-                            <url>https://github.com/nnnick/Chart.js/tarball/</url>
-                            <fromFile>${upstream.version}</fromFile>
+                            <url>${upstream.url}</url>
+                            <fromFile>v${upstream.version}.tar.gz</fromFile>
                             <toFile>${project.build.directory}/${project.artifactId}.tar.gz</toFile>
                         </configuration>
                     </execution>
@@ -86,7 +86,7 @@
                                 <untar src="${project.build.directory}/chartjs.tar" dest="${project.build.directory}" />
                                 <echo message="moving resources" />
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/nnnick-Chart.js-${upstream.version}" />
+                                    <fileset dir="${project.build.directory}/Chart.js-${upstream.version}" excludes="docs/ samples/"/>
                                 </move>
                             </target>
                         </configuration>
