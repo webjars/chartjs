@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>chartjs</artifactId>
-    <version>2.1.3-SNAPSHOT</version>
+    <version>2.1.3</version>
     <name>Chart.js</name>
     <description>WebJar for Chart.js</description>
     <url>http://webjars.org</url>
@@ -36,7 +36,7 @@
         <url>http://github.com/webjars/chartjs</url>
         <connection>scm:git:https://github.com/webjars/chartjs.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/chartjs.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>chartjs-2.1.3</tag>
     </scm>
     
     <properties>
@@ -86,7 +86,7 @@
                                 <untar src="${project.build.directory}/chartjs.tar" dest="${project.build.directory}" />
                                 <echo message="moving resources" />
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/Chart.js-${upstream.version}/dist"/>
+                                    <fileset dir="${project.build.directory}/Chart.js-${upstream.version}/dist" />
                                 </move>
                             </target>
                         </configuration>
