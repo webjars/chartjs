@@ -41,9 +41,8 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.version>2.7.2</upstream.version>
         <upstream.url>https://github.com/nnnick/Chart.js/archive</upstream.url>
-        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
+        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
         <requirejs>
            {
               "paths" : { "chartjs" : "Chart" }
@@ -53,6 +52,20 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>com.jamesward</groupId>
+                <artifactId>unsnapshot-maven-plugin</artifactId>
+                <version>0.2</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>unsnapshot</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>wagon-maven-plugin</artifactId>
@@ -65,7 +78,7 @@
                         </goals>
                         <configuration>
                             <url>${upstream.url}</url>
-                            <fromFile>v${upstream.version}.tar.gz</fromFile>
+                            <fromFile>v${version.unsnapshot}.tar.gz</fromFile>
                             <toFile>${project.build.directory}/${project.artifactId}.tar.gz</toFile>
                         </configuration>
                     </execution>
@@ -86,7 +99,7 @@
                                 <untar src="${project.build.directory}/chartjs.tar" dest="${project.build.directory}" />
                                 <echo message="moving resources" />
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/Chart.js-${upstream.version}/dist" />
+                                    <fileset dir="${project.build.directory}/Chart.js-${version.unsnapshot}/dist" />
                                 </move>
                             </target>
                         </configuration>
