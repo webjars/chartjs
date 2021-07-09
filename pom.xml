@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>chartjs</artifactId>
-    <version>2.9.5-SNAPSHOT</version>
+    <version>3.4.1-SNAPSHOT</version>
     <name>Chart.js</name>
     <description>WebJar for Chart.js</description>
     <url>http://webjars.org</url>
@@ -41,11 +41,11 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.url>https://github.com/nnnick/Chart.js/archive</upstream.url>
+        <upstream.url>https://github.com/chartjs/Chart.js/releases/download/v${version.unsnapshot}</upstream.url>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
         <requirejs>
            {
-              "paths" : { "chartjs" : "Chart" }
+              "paths" : { "chartjs" : "dist/chart" }
            }
         </requirejs>
     </properties>
@@ -78,7 +78,7 @@
                         </goals>
                         <configuration>
                             <url>${upstream.url}</url>
-                            <fromFile>v${version.unsnapshot}.tar.gz</fromFile>
+                            <fromFile>chart.js-${version.unsnapshot}.tgz</fromFile>
                             <toFile>${project.build.directory}/${project.artifactId}.tar.gz</toFile>
                         </configuration>
                     </execution>
@@ -99,7 +99,7 @@
                                 <untar src="${project.build.directory}/chartjs.tar" dest="${project.build.directory}" />
                                 <echo message="moving resources" />
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/Chart.js-${version.unsnapshot}/dist" />
+                                    <fileset dir="${project.build.directory}/package" />
                                 </move>
                             </target>
                         </configuration>
