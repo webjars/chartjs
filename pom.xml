@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>chartjs</artifactId>
-    <version>4.1.3-SNAPSHOT</version>
+    <version>4.4.3-SNAPSHOT</version>
     <name>Chart.js</name>
     <description>WebJar for Chart.js</description>
     <url>http://webjars.org</url>
@@ -116,7 +116,7 @@
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.5</version>
+                <version>1.6.13</version>
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>sonatype-nexus-staging</serverId>
